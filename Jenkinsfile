@@ -4,7 +4,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
     }
 
-    agent { label 'slave_for_project_A' }
+    agent any
 
     tools {
         maven 'maven_3.8.7'
