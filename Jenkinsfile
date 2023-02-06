@@ -59,6 +59,26 @@ pipeline {
               }
             }
         }
+        stage(' Docker Image Push to Amazon ECR') {
+           steps {
+              script {
+                 withDockerRegistry([credentialsId:'ecr:us-east-1:ecr-credentials', url:"https://144161705399.dkr.ecr.us-east-1.amazonaws.com"]){
+                 sh """
+                 echo "List the docker images present in local"
+                 docker images
+                 echo "Tagging the Docker Image: In Progress"
+                 docker tag flipkart-ms:latest 144161705399.dkr.ecr.us-east-1.amazonaws.com/flipkart-ms:latest
+                 echo "Tagging the Docker Image: Completed"
+                 echo "Push Docker Image to ECR : In Progress"
+                 docker push 144161705399.dkr.ecr.us-east-1.amazonaws.com/flipkart-ms:latest
+                 echo "Push Docker Image to ECR : Completed"
+                 """
+                 }
+              }
+           }
+        }
+
+
 
     }
 }
