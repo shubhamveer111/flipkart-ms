@@ -46,19 +46,7 @@ pipeline {
                 echo 'Docker Image Scanning Completed'
             }
         }
-        stage(' Docker push to Docker Hub') {
-           steps {
-              script {
-                 withCredentials([string(credentialsId: 'dockeruser', variable: 'dockeruser')]){
-                 sh 'docker login docker.io -u shubhamveer111 -p ${dockeruser}'
-                 echo "Push Docker Image to DockerHub : In Progress"
-                 sh 'docker push shubhamveer111/flipkart-ms:latest'
-                 echo "Push Docker Image to DockerHub : In Progress"
-                 sh 'whoami'
-                 }
-              }
-            }
-        }
+
         stage(' Docker Image Push to Amazon ECR') {
            steps {
               script {
@@ -77,19 +65,7 @@ pipeline {
               }
            }
         }
-        stage('Upload the docker Image to Nexus') {
-           steps {
-              script {
-                 withCredentials([usernamePassword(credentialsId: 'nexus-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                 sh 'docker login http://13.127.62.197:8085/repository/flipkart-ms/ -u admin -p ${PASSWORD}'
-                 echo "Push Docker Image to Nexus : In Progress"
-                 sh 'docker tag flipkart-ms 13.127.62.197:8085/flipkart-ms:latest'
-                 sh 'docker push 13.127.62.197:8085/flipkart-ms'
-                 echo "Push Docker Image to Nexus : Completed"
-                 }
-              }
-            }
-        }
+
 
 
     }
