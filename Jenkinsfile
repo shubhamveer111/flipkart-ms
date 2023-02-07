@@ -53,7 +53,7 @@ pipeline {
                  sh 'docker login docker.io -u shubhamveer111 -p ${dockerhubCred}'
                  echo "Push Docker Image to DockerHub : In Progress"
                  sh 'docker push shubhamveer111/flipkart-ms:latest'
-                 echo "Push Docker Image to DockerHub : In Progress"
+                 echo "Push Docker Image to DockerHub : Completed"
                  sh 'whoami'
                  }
               }
