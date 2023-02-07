@@ -46,7 +46,19 @@ pipeline {
                 echo 'Docker Image Scanning Completed'
             }
         }
-
+        stage(' Docker push to Docker Hub') {
+           steps {
+              script {
+                 withCredentials([string(credentialsId: 'dockerhubCred', variable: 'dockerhubCred')]){
+                 sh 'docker login docker.io -u shubhamveer111 -p ${dockerhubCred}'
+                 echo "Push Docker Image to DockerHub : In Progress"
+                 sh 'docker push shubhamveer111/flipkart-ms:latest'
+                 echo "Push Docker Image to DockerHub : In Progress"
+                 sh 'whoami'
+                 }
+              }
+            }
+        }
         stage(' Docker Image Push to Amazon ECR') {
            steps {
               script {
