@@ -7,7 +7,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven_3.8.7'
+        maven 'maven_3.8.6'
     }
     stages {
         stage('Code Compilation') {
@@ -77,7 +77,19 @@ pipeline {
               }
            }
         }
-
+        stage('Upload the docker Image to Nexus') {
+           steps {
+              script {
+                 withCredentials([usernamePassword(credentialsId: 'nexus-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+                 sh 'docker login http://13.127.62.197:8085/repository/flipkart-ms/ -u admin -p ${PASSWORD}'
+                 echo "Push Docker Image to Nexus : In Progress"
+                 sh 'docker tag flipkart-ms 13.127.62.197:8085/flipkart-ms:latest'
+                 sh 'docker push 13.127.62.197:8085/flipkart-ms'
+                 echo "Push Docker Image to Nexus : Completed"
+                 }
+              }
+            }
+        }
 
 
     }
