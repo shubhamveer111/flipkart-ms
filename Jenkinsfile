@@ -7,21 +7,22 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven_3.8.7'
+        nodejs 'node'
+        
     }
     stages {
         stage('Code Compilation') {
             steps {
                 echo 'code compilation is starting'
                 sh 'mvn clean compile'
-				echo 'code compilation is completed'
+		echo 'code compilation is completed'
             }
         }
         stage('Code Package') {
             steps {
                 echo 'code packing is starting'
                 sh 'mvn clean package'
-				echo 'code packing is completed'
+                echo 'code packing is completed'
             }
         }
         stage('Building & Tag Docker Image') {
