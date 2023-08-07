@@ -24,7 +24,23 @@ pipeline {
                 sh 'mvn clean package'
                 echo 'code packing is completed'
             }
-        }
+        }/**
+
+        stage('SonarQube Quality Check') {
+            environment {
+                scannerHome = tool 'qube'
+            }
+            steps {
+                withSonarQubeEnv('sonar-server') {
+                    sh "${scannerHome} /bin/sonar-server"
+                    sh 'mvn sonar:server'
+                }
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        } **/  
+         
         stage('Building & Tag Docker Image') {
             steps {
                 echo 'Starting Building Docker Image'
