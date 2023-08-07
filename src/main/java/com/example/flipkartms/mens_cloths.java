@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class mens_cloths {
     @GetMapping("/mens_cloths")
     public String getData() {
-        return "Please prebook your cloths,Premium offer is getting now ";
+        return "Please pre-book your cloths,Premium offer is getting now ";
     }
 }
