@@ -11,9 +11,13 @@ vpc:
     public:
       Test1:
         id: subnet-0f3e4371be9b5b3ad
+      Test3:
+        id: subnet-00f8906d398f57e0a
     private:
       Test2:
         id: subnet-00ad606751461c6a7
+      Test4:
+        id: subnet-0e5ddf7047c3cca12
 nodeGroups:
   - name: jenkins
     instanceType: t2.micro
