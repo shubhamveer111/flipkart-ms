@@ -1,0 +1,24 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: EKS-Demo-Cluster
+  region: us-east-1
+
+vpc:
+  id: vpc-00274eb57b2dfc037
+  cidr: "172.31.0.0/16"
+  subnets:
+    public:
+      Test1:
+        id: subnet-0f3e4371be9b5b3ad
+    private:
+      Test2:
+        id: subnet-00ad606751461c6a7
+nodeGroups:
+  - name: jenkins
+    instanceType: t2.micro
+    desiredCapacity: 2
+  - name: Docker
+    instanceType: t2.micro
+    desiredCapacity: 1
+    privateNetworking: true

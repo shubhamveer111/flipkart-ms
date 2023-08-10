@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-demo
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flipkart-ms
+  template:
+    metadata:
+      labels:
+        app: flipkart-ms
+    spec:
+      containers:
+        - name: back-end
+          image: 144161705399.dkr.ecr.us-east-1.amazonaws.com/flipkart-ms:latest
+          ports:
+            - containerPort: 80
