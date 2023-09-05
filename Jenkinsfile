@@ -91,6 +91,11 @@ pipeline {
            steps {
               script {
                  sh """
+		 aws configure
+                 AKIASDEFVBW3W3WWMN62
+		 NBs2t3triyIa7GLWLG3dKY4VsIet7PZA5mKuqn1v
+                 us-east-1
+		 json
                  aws cloudformation deploy --template-file amazon-eks-vpc-private-subnets.yaml --stack-name my-new-stack
                  echo "Stack is Created : Successfully"
                  """
