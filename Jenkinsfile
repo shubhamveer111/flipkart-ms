@@ -94,7 +94,7 @@ pipeline {
 		 aws configure set aws_access_key_id AKIASDEFVBW3W3WWMN62 
                  aws configure set aws_secret_access_key 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
 		 aws configure set default.region us-east-1
-                 aws cloudformation deploy --template-file amazon-eks-vpc-private-subnets.yaml --stack-name my-new-stack
+                 aws cloudformation deploy --template-file "flipkart-ms/amazon-eks-vpc-private-subnets.yml" --stack-name my-new-stack
                  echo "Stack is Created : Successfully"
                  """
                  }
