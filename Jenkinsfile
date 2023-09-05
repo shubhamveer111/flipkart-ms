@@ -87,6 +87,15 @@ pipeline {
               }
            }
         }
-
+	stage('VPC Creation ') {
+           steps {
+              script {
+                 sh """
+                 aws cloudformation deploy --template-file amazon-eks-vpc-private-subnets.yaml --stack-name my-new-stack
+                 echo "Stack is Created : Successfully"
+                 """
+                 }
+              }
+           }
     }
 }
