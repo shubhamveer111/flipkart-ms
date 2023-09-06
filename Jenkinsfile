@@ -94,7 +94,7 @@ pipeline {
 		 aws configure set aws_access_key_id AKIASDEFVBW3W3WWMN62 
                  aws configure set aws_secret_access_key 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
 		 aws configure set default.region us-east-1
-                 /** aws cloudformation deploy --template-file /var/lib/jenkins/workspace/flipkart-ms-pipeline/amazon-eks-vpc-private-subnets.yml --stack-name my-new-stack **/
+                
                  echo "Stack is Created : Successfully"
 		 eksctl create cluster -f /var/lib/jenkins/workspace/flipkart-ms-pipeline/cluster.yml 
                  echo "Cluster is Created : Successfully"
