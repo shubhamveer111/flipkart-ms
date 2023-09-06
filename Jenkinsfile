@@ -96,7 +96,7 @@ pipeline {
 		 aws configure set default.region us-east-1
                  aws cloudformation deploy --template-file /var/lib/jenkins/workspace/flipkart-ms-pipeline/amazon-eks-vpc-private-subnets.yml --stack-name my-new-stack
                  echo "Stack is Created : Successfully"
-		 eksctl create cluster -f /var/lib/jenkins/workspace/flipkart-ms-pipeline/cluster.yaml 
+		 eksctl create cluster -f /var/lib/jenkins/workspace/flipkart-ms-pipeline/cluster.yml 
                  echo "Cluster is Created : Successfully"
                  """
                  }
