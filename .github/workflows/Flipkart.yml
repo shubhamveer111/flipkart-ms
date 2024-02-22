@@ -17,7 +17,13 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-
+          distribution: 'adopt'
+          
+      - name: Use Maven 3.8.7
+        uses: maven/maven@v3.8.7
+        with:
+          mavenVersion: '3.8.7'
+ 
       - name: Build and package with Maven
         run: |
           echo 'Code Compilation is starting'
