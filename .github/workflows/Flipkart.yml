@@ -38,7 +38,7 @@ jobs:
       - name: Docker push to Docker Hub
         run: |
           echo "Push Docker Image to DockerHub : In Progress"
-          echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login docker.io -u shubhamveer111 --password-stdin
+          echo "Shubhamveer@111" | docker login docker.io -u shubhamveer111 --password-stdin
           docker push shubhamveer111/flipkart-ms:latest
           echo "Push Docker Image to DockerHub : Completed"
           whoami
